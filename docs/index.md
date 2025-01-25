@@ -2,7 +2,8 @@
 layout: default
 title:  Home
 ---
-![Connect4 Game](https://upload.wikimedia.org/wikipedia/commons/a/ad/Connect_Four.gif"Connect4 Game")
+![image](https://github.com/user-attachments/assets/807a6c32-d275-4e4d-88a1-a4e4edc66b3e)
+
 Source code: https://github.com/guangf1/Disconnect4
 
 Reports:
