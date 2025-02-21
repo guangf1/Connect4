@@ -35,8 +35,7 @@ Just as we did with PPO, we kept increasing the difficulty of the AI opponent to
 
 
 ·Alphazero  
-
-
+We have not yet explored the actual approach of Alphazero, but have created a “forgery” Alphazero method based on the environment built-ins. Lucas Bertola's Connect four environment provides the ModelPlayer class, which allows the environment to compete with itself by setting its opponents to be the same as the model itself. the ModelPlayer class can be constantly updated, so our AI agent is always playing against its own level of opponent. As of now we have not explored the full usage of Alphazero much, and in the future we will either use the actual approach of alphazero or try other algorithms
 
 ## Evaluation
 
