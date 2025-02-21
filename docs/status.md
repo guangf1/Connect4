@@ -39,6 +39,7 @@ We have not yet explored the actual approach of Alphazero, but have created a �
 
 ## Evaluation  
 After actual code implementation and model training, and understanding the CONNECT FOUR environment, we have more perspectives for evaluating the performance of the project.  
+
 ·Elo Score  
 The funcionality to calculate elo scores is provided in the environment set up. This is a very interesting aspect of the environment, the higher the elo score, the better the AI model performs. As for new, we didn't test on all the AI opponents provided in the environment. The elo score comparison table is as follows:
 
@@ -63,6 +64,11 @@ We collected the rew mean achieved by the model at the final timestep when train
 The image above shows the gameplay viewed in real time after rendering with pygame. By observing this, we realize that the trained AI will in most cases prevent the opponent from winning, or make the right move when it is about to win. In other cases, the trained AI tends to land on top of its own pieces. We believe this is due to insufficiently rich reward mechanisms. Simple +1 for winning and -1 for losing may not be able to handle the strategy in the middle of the game.
 
 ## Remaining Goals and Challenges
+🟥
+
+🟦
+
+🟩
 
 ## Resources Used
 
