@@ -17,10 +17,9 @@ In the current environment, we follow the default setup. state is a 6x7 board, w
 **Algorithms**:  
 ·Proximal policy optimization(PPO)  
 Proximal policy optimization is one type of reinforcement learning algorithm used to train AI. The algorithm uses a policy gradient algorithm. It combines the ideas from A2C and TRPO algorithm. The PPO training approach we used from stable_baseline3 library is based on the paper "Proximal Policy Optimization Algorithms" by Schulman, John, et al. The paper summrizes that the ppo function we used is a policy gradient method for reinforcement learning, which alternate between sampling data through interaction with the environment, and optimizing a "surrogate" objective function using stochastic gradient ascent.  
-The following formula defines the Clipped Surrogate Objective(CSO) of the PPO, which is used to stabilize policy updates and avoid excessive policy changes:
-$$L^{\text{CLIP}}(\theta) = \hat{\mathbb{E}}_t \left[ \min \left( r_t(\theta) \hat{A}_t, \, \text{clip} \left( r_t(\theta), 1 - \epsilon, 1 + \epsilon \right) \hat{A}_t \right) \right]$$
-
-
+The following formula defines the Clipped Surrogate Objective(CSO) of the PPO, which is used to stabilize policy updates and avoid excessive policy changes:  
+$$L^{\text{CLIP}}(\theta) = \hat{\mathbb{E}}_t \left[ \min \left( r_t(\theta) \hat{A}_t, \, \text{clip} \left( r_t(\theta), 1 - \epsilon, 1 + \epsilon \right) \hat{A}_t \right) \right]$$  
+In our project, we use the ppo method from the stable_baseline3 library. Starting with the simplest BabyPlayer provided in the environment, we gradually increase the difficulty and train up to the TeenagerSmarterPlayer, with each training session consisting of 250,000 timesteps. For the environment, we have so far kept the default parameters and just adjusted the learning_rate to 1e-4, to expect a good results after larger timesteps.
 
 ·Deep Q-network(DQN)  
 
