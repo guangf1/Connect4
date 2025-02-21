@@ -83,7 +83,7 @@ Used as the environment for tranning AI models, including existing AI opponents 
 **⬢Python Libraries**  
 stable_baselines3, matplotlib, numpy, os, random
 
-**⬢AI Chatbot**
+**⬢AI Chatbot**  
 Chatgpt, Deepseek  
 ·Environment Suggestions ([Connect four environment by Lucas Bertola](https://github.com/lucasBertola/Connect-4-Gym-env-Reinforcement-learning/tree/main/exemples))  
 ·Error Message Analysis  
