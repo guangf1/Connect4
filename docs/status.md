@@ -4,7 +4,7 @@ title: Status
 ---
 
 ## Project Summary
-Connect Four is a board game that was released by Howard Wexler in 1974. In a 7x6 board, a player wins when the player places pieces in any direction to form a line of length four. Under the off the shelf [Connect four environment by Lucas Bertola](https://github.com/lucasBertola/Connect-4-Gym-env-Reinforcement-learning/tree/main/exemples), which provides different levels of opponent players for us to train a model, our project explores different RL algorithms and reward strategy to train an AI that plays connect four. In our project, we will try Proximal policy optimization(PPO), Deep Q-network(DQN), and Alphazero to train a powerful AI and evaluate their performances, and compare different stable baselines3 stratigies(Mlp,Cnn). The AI performance will be evaluated by rew mean score, elo ranking(environment built-in system), visulization of the actual game plays, and the winnng rate against trained models.
+Connect Four is a board game that was released by Howard Wexler in 1974. In a 7x6 board, a player wins when the player places tiles in any direction to form a line of length four. Under the off the shelf [Connect four environment by Lucas Bertola](https://github.com/lucasBertola/Connect-4-Gym-env-Reinforcement-learning/tree/main/exemples), which provides different levels of opponent players for us to train a model, our project explores different RL algorithms and reward strategy to train an AI that plays connect four. In our project, we will try Proximal policy optimization(PPO), Deep Q-network(DQN), and Alphazero to train a powerful AI and evaluate their performances, and compare different stable baselines3 stratigies(Mlp,Cnn). The AI performance will be evaluated by rew mean score, elo ranking(environment built-in system), visulization of the actual game plays, and the winnng rate against trained models.
 
 ## Approach
 **Core ideas**:  
@@ -12,7 +12,7 @@ Connect Four is a board game that was released by Howard Wexler in 1974. In a 7x
 2. So far, we stop at TeenagerSmarterPlayer level opponents. We would like to achieve the desired results in a short amount of training first before expanding into more difficult areas to avoid wasting time  
 3. We mimic the approach used in the exercise that utilizing the stable_baselines3 library to run the DQN and PPO algorithms. For Alphazero self-learning, we temporarily try the approach recommended in the Connect-4-Gym-env source code readme file
 
-In the current environment, we follow the default setup. state is a 6x7 board, where dropping a piece in any column will leave the piece on the bottom row of the empty space. There are 7 actions, each action represents 1 of the 7 columns of the board. reward is +1 for winning the game, -1 for losing the game or dropping a piece in a full column, and 0 for a draw or an action that does not end the game.
+In the current environment, we follow the default setup. state is a 6x7 board, where dropping a tile in any column will leave the tile on the bottom row of the empty space. There are 7 actions, each action represents 1 of the 7 columns of the board. reward is +1 for winning the game, -1 for losing the game or dropping a tile in a full column, and 0 for a draw or an action that does not end the game.
 
 **Algorithms**:  
 ·Proximal policy optimization(PPO)  
@@ -61,14 +61,20 @@ We collected the rew mean achieved by the model at the final timestep when train
 
 ![1740132207454](https://github.com/user-attachments/assets/a1b1b75c-f90c-4513-90b1-64316c24ca19)
 
-The image above shows the gameplay viewed in real time after rendering with pygame. By observing this, we realize that the trained AI will in most cases prevent the opponent from winning, or make the right move when it is about to win. In other cases, the trained AI tends to land on top of its own pieces. We believe this is due to insufficiently rich reward mechanisms. Simple +1 for winning and -1 for losing may not be able to handle the strategy in the middle of the game.
+The image above shows the gameplay viewed in real time after rendering with pygame. By observing this, we realize that the trained AI will in most cases prevent the opponent from winning, or make the right move when it is about to win. In other cases, the trained AI tends to land on top of its own tiles. We believe this is due to insufficiently rich reward mechanisms. Simple +1 for winning and -1 for losing may not be able to handle the strategy in the middle of the game.
 
 ## Remaining Goals and Challenges
-🟥
+🟥**Change Reward System**  
+Implement more complex reward system. +1 for a win, -1 for a loss, and 0 for a draw game does not reflect the game plan during the game and cannot be trained effectively if the opponent is too strong or too weak. We may increase the reward for winning to +10 and the penalty for losing to -10. During the game, we may also add bonuses such as +3 for preventing opponent from winning, +3 for connecting three tiles in a line, and so on. By adding a more rewarding situations, it is possible to reflect the step quality during the game, rather than just changing the score at the end of a game
 
-🟦
+🟦**Adjust Hyperparameters**  
+For now, we are using the default hyperparameters except for learning rate. There is a high probability that the default hyperparameters are not optimal for training, and we will optimize the hyperparameters through more experiments
 
-🟩
+🟩**Change Training Policy**  
+We are using only Mlp policy to train our models, because using Cnn requires us to modify the input format. Cnn seems to be a better policy for connect four AI, since the board is a 6x7 array and Cnn can detect spatial information, which is perfect for 2D array
+
+🟪**Change Board Size & Game Rule**  
+If we can already train the model to an excellent level in a 6x7 Connect4 game, we can scale the game up. Possibly, we could change the 6x7 board to an 8x9 board and change the winning rule to five tiles in a line. Our moon shot goal for this project is to reach the level of the AlphaFour AI in the environment while broadening the rules of the game.
 
 ## Resources Used
 
