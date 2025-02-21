@@ -8,11 +8,13 @@ Connect Four is a board game that was released by Howard Wexler in 1974. In a 7x
 
 ## Approach
 **Core ideas**:
+
 ·Since connect four is a two-player competitive game, we will train our model incrementally from easy to difficult opponents to avoid not having good enough training results due to consistent repetition of the reward results
 ·So far, we stop at TeenagerSmarterPlayer level opponents. We would like to achieve the desired results in a short amount of training first before expanding into more difficult areas to avoid wasting time.
 ·We mimic the approach used in the exercise that utilizing the stable_baselines3 library to run the DQN and PPO algorithms. For Alphazero self-learning, we temporarily try the approach recommended in the Connect-4-Gym-env source code readme file
 
 **Algorithms**:
+
 ·Proximal policy optimization(PPO)
 
 ·Deep Q-network(DQN)
