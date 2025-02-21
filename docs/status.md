@@ -24,7 +24,13 @@ In our project, we use the ppo method from the stable_baseline3 library. Startin
 ·Deep Q-network(DQN)  
 DQN (Deep Q-Network) is a reinforcement learning algorithm that combines deep learning and Q-Learning to solve complex reinforcement learning problems. We still used the DQN function defined in stable_baseline3 library to train our AI model. The DQN approach defined in stable_baseline3 based on the paper "Playing Atari with Deep Reinforcement Learning" by Mnih, Volodymyr, et al. The paper indicated that the model is a convolutional neural network, trained with a variant of Q-learning, whose input is raw pixels and whose output is a value function estimating future rewards.  
 The following function from the paper defined how DQN continuously adapts its strategy and converges to the optimal solution during training:  
-$$\nabla_{\theta_i} L_i(\theta_i) = \mathbb{E}_{s, a, r, s'} \left[ \left( r + \gamma \max_{a'} Q(s', a'; \theta_{i-1}) - Q(s, a; \theta_i) \right) \nabla_{\theta_i} Q(s, a; \theta_i) \right]$$  
+$$
+\nabla_{\theta_i} L_i(\theta_i) = \mathbb{E}_{s, a, r, s'} \left[ 
+\left( r + \gamma \max_{a'} Q(s', a'; \theta_{i-1}) 
+- Q(s, a; \theta_i) \right) 
+\nabla_{\theta_i} Q(s, a; \theta_i) 
+\right]
+$$  
 Just as we did with PPO, we kept increasing the difficulty of the AI opponent to train our model, but this time we only used up to 100,000 timesteps per training because the training time for DQN is longer, and we wanted to quickly validate the training for optimization purposes, and increase the timesteps when we were sure that the training was working relatively perfectly
 
 
