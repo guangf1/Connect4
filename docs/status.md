@@ -28,7 +28,7 @@ DQN (Deep Q-Network) is a reinforcement learning algorithm that combines deep le
 The following function from the paper defined how DQN continuously adapts its strategy and converges to the optimal solution during training:
 
 $$
-\nabla_{\theta_i} L_i(\theta_i) = \mathbb{E}_{\{s, a, r, s'\}} \left[ \left( r + \gamma \max_{a'} Q(s', a'; \theta_{i-1}) - Q(s, a; \theta_i) \right) \nabla_{\theta_i} Q(s, a; \theta_i) \right]
+\nabla_{\theta_i} L_i(\theta_i) = \mathbb{E}_{s, a, r, s'} \left[ \left( r + \gamma \max_{a'} Q(s', a'; \theta_{i-1}) - Q(s, a; \theta_i) \right) \nabla_{\theta_i} Q(s, a; \theta_i) \right]
 $$
 
 Just as we did with PPO, we kept increasing the difficulty of the AI opponent to train our model, but this time we only used up to 100,000 timesteps per training because the training time for DQN is longer, and we wanted to quickly validate the training for optimization purposes, and increase the timesteps when we were sure that the training was working relatively perfectly
