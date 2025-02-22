@@ -91,3 +91,6 @@ Chatgpt, Deepseek
 ·Algorithms Outlining for Understanding
 
 # Video Summary
+
+[![Vider Summary](https://drive.google.com/file/d/1ZxunxGD0D75ssuFaIkq8ikQ3fxGvRphs/view?usp=drive_link)](https://drive.google.com/file/d/1LK-sLaFAQn672R-tU9YtPwkpHNndcM_d/view?usp=drive_link)
+
