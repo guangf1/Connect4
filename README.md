@@ -1,2 +1,2 @@
-# Disconnect4
-Project website: https://guangf1.github.io/Disconnect4
+# Connect4
+Project website: https://guangf1.github.io/Connect4
