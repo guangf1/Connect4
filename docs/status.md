@@ -93,10 +93,10 @@ Chatgpt, Deepseek
 # Video Summary
 
 <iframe 
-  src="https://drive.google.com/file/d/1LK-sLaFAQn672R-tU9YtPwkpHNndcM_d/view?usp=drive_link" 
+  src="./progress_presentation.mp4" 
   width="640" 
   height="480" 
-  frameborder="0"
+  frameborder="0" 
   allowfullscreen>
 </iframe>
 
