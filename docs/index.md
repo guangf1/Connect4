@@ -4,7 +4,7 @@ title:  Home
 ---
 ![image](https://upload.wikimedia.org/wikipedia/commons/a/ad/Connect_Four.gif)
 
-Source code: [https://github.com/guangf1/Disconnect4](https://github.com/guangf1/Disconnect4)
+Source code: [https://github.com/guangf1/Disconnect4](https://github.com/guangf1/Connect4)
 
 Reports:
 
