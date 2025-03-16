@@ -26,9 +26,6 @@ The environment built-in reward system of win +1 lose -1 draw 0 is not effective
 |stop opponent from winning|+0.3|
 |place tile in the middle column|+0.01|
 
-
-Translated with DeepL.com (free version)
-
 **·Baseline Approach**
 A basic use case was given in the documentation of the ConnectFour environment library. We use this example as our baseline approach. we simply create an instance of the ConnectFour environment and train a 100,000-step model using the PPO algorithm + Mlp training strategy and the default hyperparameters. An example code of the Baseline approach is as follows:
 ```python
