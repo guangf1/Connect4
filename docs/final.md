@@ -17,7 +17,8 @@ In our project, we will try Proximal policy optimization(PPO), Deep Q-network(DQ
 The state is a 6x7 board, where dropping a tile in any column will leave the tile on the bottom row of the empty space. There are 7 actions, each action represents 1 of the 7 columns of the board. reward is +1 for winning the game, -1 for losing the game or dropping a tile in a full column, and 0 for a draw or an action that does not end the game. Since connect four is a two-player competitive game, we will train our model incrementally from easy to difficult opponents to avoid not having good enough training results due to consistent repetition of the reward results.  
   
 The environment built-in reward system of win +1 lose -1 draw 0 is not effective, since the reward was always 0 when the game was not over. under such a system most of the AI's timesteps were wasted and it was very difficult to learn effective attack/defense strategies. Therefore, we have adjusted the reward mechanism of the environment in the hope that the AI receives a valid reward for each move. The new reward mechanism is as follows:  
-![1742102978578](https://github.com/user-attachments/assets/f83c41f0-5293-44a5-b232-4c6c16ce6227)
+![1742102978578](https://github.com/user-attachments/assets/f83c41f0-5293-44a5-b232-4c6c16ce6227)  
+On top of that, for each action, the AI receives a -0.0005 REWARD, which is used to encourage the AI to complete a game in a shorter number of steps.  
 
 
 **·Baseline Approach**  
@@ -26,9 +27,8 @@ A basic use case was given in the documentation of the ConnectFour environment l
 env = ConnectFourEnv(opponent=BabyPlayer())
 model = PPO("MlpPolicy", env, verbose=1,)
 model.learn(total_timesteps=(100000))
-```
-On top of that, for each action, the AI receives a -0.0005 REWARD, which is used to encourage the AI to complete a game in a shorter number of steps.  
-The above baseline approach is our first attempt in unlocking our understanding of the ConnectFour environment and knowing what we're doing, even though the Baseline Approach is riddled with shortcomings
+```  
+The above baseline approach is our first attempt in unlocking our understanding of the ConnectFour environment and knowing what we're doing. BabyPlayer acts almost entirely at random, so the AI quickly finds a winning strategy, even with only 100,000 timesteps. However, such training is completely impractical, and the AI learns strategies that are almost impossible to use against other levels of opponents
 
 **·Proximal Policy Optimization(PPO)**  
 Proximal policy optimization is one type of reinforcement learning algorithm used to train AI. The algorithm uses a policy gradient algorithm. It combines the ideas from A2C and TRPO algorithm. The PPO training approach we used from stable_baseline3 library based on the paper ["Proximal Policy Optimization Algorithms" by Schulman, John, et al](https://arxiv.org/pdf/1707.06347). The paper summarizes that the ppo function we used is a policy gradient method for reinforcement learning, which alternate between sampling data through interaction with the environment, and optimizing a "surrogate" objective function using stochastic gradient ascent.  
