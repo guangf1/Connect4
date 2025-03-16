@@ -15,6 +15,19 @@ In our project, we will try Proximal policy optimization(PPO), Deep Q-network(DQ
 
 ## Approaches
 The state is a 6x7 board, where dropping a tile in any column will leave the tile on the bottom row of the empty space. There are 7 actions, each action represents 1 of the 7 columns of the board. reward is +1 for winning the game, -1 for losing the game or dropping a tile in a full column, and 0 for a draw or an action that does not end the game. Since connect four is a two-player competitive game, we will train our model incrementally from easy to difficult opponents to avoid not having good enough training results due to consistent repetition of the reward results.  
+The environment built-in reward system of win +1 lose -1 draw 0 is not effective, since the reward was always 0 when the game was not over. under such a system most of the AI's timesteps were wasted and it was very difficult to learn effective attack/defense strategies. Therefore, we have adjusted the reward mechanism of the environment in the hope that the AI receives a valid reward for each move. The new reward mechanism is as follows:
+|Behavior|Reward|
+|------|------|
+|Win|+1|
+|Loss|-1|
+|Out of Bound|-1.5|
+|2 tiles in a line|+0.05|
+|3 tiles in a line|+0.1|
+|stop opponent from winning|+0.3|
+|place tile in the middle column|+0.01|
+
+
+Translated with DeepL.com (free version)
 
 **·Baseline Approach**
 A basic use case was given in the documentation of the ConnectFour environment library. We use this example as our baseline approach. we simply create an instance of the ConnectFour environment and train a 100,000-step model using the PPO algorithm + Mlp training strategy and the default hyperparameters. An example code of the Baseline approach is as follows:
@@ -22,8 +35,7 @@ A basic use case was given in the documentation of the ConnectFour environment l
 env = ConnectFourEnv(opponent=BabyPlayer())
 model = PPO("MlpPolicy", env, verbose=1,)
 model.learn(total_timesteps=(100000))
-```
-
+```  
 
 **·Proximal Policy Optimization(PPO)**
 Proximal policy optimization is one type of reinforcement learning algorithm used to train AI. The algorithm uses a policy gradient algorithm. It combines the ideas from A2C and TRPO algorithm. The PPO training approach we used from stable_baseline3 library based on the paper ["Proximal Policy Optimization Algorithms" by Schulman, John, et al](https://arxiv.org/pdf/1707.06347). The paper summarizes that the ppo function we used is a policy gradient method for reinforcement learning, which alternate between sampling data through interaction with the environment, and optimizing a "surrogate" objective function using stochastic gradient ascent.  
