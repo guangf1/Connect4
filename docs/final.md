@@ -25,7 +25,9 @@ A basic use case was given in the documentation of the ConnectFour environment l
 env = ConnectFourEnv(opponent=BabyPlayer())
 model = PPO("MlpPolicy", env, verbose=1,)
 model.learn(total_timesteps=(100000))
-```  
+```
+On top of that, for each action, the AI receives a -0.0005 REWARD, which is used to encourage the AI to complete a game in a shorter number of steps.  
+The above baseline approach is our first attempt in unlocking our understanding of the ConnectFour environment and knowing what we're doing, even though the Baseline Approach is riddled with shortcomings
 
 **·Proximal Policy Optimization(PPO)**
 Proximal policy optimization is one type of reinforcement learning algorithm used to train AI. The algorithm uses a policy gradient algorithm. It combines the ideas from A2C and TRPO algorithm. The PPO training approach we used from stable_baseline3 library based on the paper ["Proximal Policy Optimization Algorithms" by Schulman, John, et al](https://arxiv.org/pdf/1707.06347). The paper summarizes that the ppo function we used is a policy gradient method for reinforcement learning, which alternate between sampling data through interaction with the environment, and optimizing a "surrogate" objective function using stochastic gradient ascent.  
