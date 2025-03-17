@@ -59,11 +59,28 @@ The stability of PPO is an important advantage. It is a strategy gradient method
   
 **·Deep Q-network(DQN)**  
 DQN (Deep Q-Network) is a reinforcement learning algorithm that combines deep learning and Q-Learning to solve complex reinforcement learning problems. We still used the DQN function defined in stable_baseline3 library to train our AI model. The DQN approach defined in stable_baseline3 based on the paper ["Playing Atari with Deep Reinforcement Learning" by Mnih, Volodymyr, et al](https://arxiv.org/pdf/1312.5602). The paper indicated that the model is a convolutional neural network, trained with a variant of Q-learning, whose input is raw pixels and whose output is a value function estimating future rewards.  
-The following function from the paper defined how DQN continuously adapts its strategy and converges to the optimal solution during training:
-
+The following function from the paper defined how DQN continuously adapts its strategy and converges to the optimal solution during training:  
+  
 $$
 \nabla_{\theta} L_i (\theta_i) = \mathbb{E}_{s, a \sim \rho(.)} \left[ \left( r + \gamma \max_{a'} Q(s', a'; \theta_{i-1}) - Q(s, a; \theta_i) \right) \nabla_{\theta} Q(s, a; \theta_i) \right]
-$$
+$$  
+As we did when training the PPO model, we still take the approach of gradually increasing the difficulty of the opponents while gradually increasing the total timestep of training to prevent the model from failing to learn an effective strategy due to always winning or always losing. We also continue to use two different training strategies, Cnn and Mlp, and observe the difference between their training results and efficiency, and analyze the reasons based on the results. The code we wrote to train a model with DQN is almost identical to the code we train models with PPO. The difference is that due to the inefficient use of samples in PPO, we trained the DQN with fewer total timesteps per training session. The other differences are the hyperparameters adjusted to accommodate the differences between PPO and DQN. An example code of training a model using DQN algorithm is as follows:  
+```python
+env = ConnectFourEnv()
+model = DQN("CnnPolicy/MlpPolicy", env, verbose=1, #Using Different Hyperparameters)
+opponents = [BabyPlayer(), BabySmarterPlayer(), ChildPlayer(), ChildSmarterPlayer(), TeenagerPlayer(), TeenagerSmarterPlayer(), AdultPlayer(), AdultSmarterPlayer()]
+Elos = []
+Models = []
+Timesteps = [... #Fewer than the steps we train with PPO]
+
+for i in range(8):
+    env.change_opponent(opponents[i])
+    model.set_env(env)
+    model.learn(total_timesteps=Timesteps[i])
+    myModelPlayer = ModelPlayer(model,name="Your trained Model1")
+    Elos.append(EloLeaderboard().get_elo(myModelPlayer, num_matches=200))
+    Models.append(model)
+```
 
 ## Evaluation
 The results based on the environment built-in Elo scoring system will be our primary method of evaluating our programs. In addition to using Elo scores to judge the performance of AI models, we will also compare the effectiveness and convergence of using different training policies under different RL algorithms and analyze the reasons behind. Finally, we will summarize the strategies/behaviors learned by the AI based on observations of visualizing the game processes. First, let's explain how the Elo scoring system works.  
