@@ -14,9 +14,9 @@ The environment we tested on is [Connect four environment by Lucas Bertola](http
 In our project, we will try Proximal policy optimization(PPO), Deep Q-network(DQN), and MCTS to train a powerful AI and evaluate their performances, and compare different training strategies(Mlp,Cnn). We will compare the performance of different RL algorithms and training strategies, look for methods that can train a generic and robust Connect4 AI, and analyze the connections behind them.
 
 ## Approaches
-The state is a 6x7 board, where dropping a tile in any column will leave the tile on the bottom row of the empty space. There are 7 actions, each action represents 1 of the 7 columns of the board. reward is +1 for winning the game, -1 for losing the game or dropping a tile in a full column, and 0 for a draw or an action that does not end the game. Since connect four is a two-player competitive game, we will train our model incrementally from easy to difficult opponents to avoid not having good enough training results due to consistent repetition of the reward results.  
+The state is a 6x7 board, where dropping a tile in any column will leave the tile on the bottom row of the empty space. There are 7 actions, each action represents 1 of the 7 columns of the board. The default reward is +1 for winning the game, -1 for losing the game or dropping a tile in a full column, and 0 for a draw or an action that does not end the game. Since connect four is a two-player competitive game, we will train our model incrementally from easy to difficult opponents to avoid not having good enough training results due to consistent repetition of the reward results.  
   
-The environment built-in reward system of win +1 lose -1 draw 0 is not effective, since the reward was always 0 when the game was not over. under such a system most of the AI's timesteps were wasted and it was very difficult to learn effective attack/defense strategies. Therefore, we have adjusted the reward mechanism of the environment in the hope that the AI receives a valid reward for each move. The new reward mechanism is as follows:  
+The environment built-in reward system of win +1 lose -1 draw 0 is not effective, since the reward was always 0 when the game was not over. Under such a system most of the AI's timesteps were wasted and it was very difficult to learn effective attack/defense strategies. Therefore, we modified the environment to receive reward every step and adjusted the reward mechanism of the environment in the hope that the AI receives a valid reward for each move. The new reward mechanism is as follows:  
 ![1742102978578](https://github.com/user-attachments/assets/f83c41f0-5293-44a5-b232-4c6c16ce6227)  
 On top of that, for each action, the AI receives a -0.0005 REWARD, which is used to encourage the AI to complete a game in a shorter number of steps.  
 
@@ -61,5 +61,10 @@ stable_baselines3, matplotlib, numpy, os, random, time, pygame, gymnasium, torch
 ·Schulman, John, et al. "Proximal policy optimization algorithms." arXiv preprint arXiv:1707.06347 (2017) [URL](https://arxiv.org/pdf/1707.06347)  
 ·Mnih, Volodymyr, et al. "Playing atari with deep reinforcement learning." arXiv preprint arXiv:1312.5602 (2013) [URL](https://arxiv.org/pdf/1312.5602)  
 
-
 ## AI Tool Usage
+**⬢AI Chatbot:** Chatgpt, Deepseek  
+·Environment Suggestion: ([Connect four environment by Lucas Bertola](https://github.com/lucasBertola/Connect-4-Gym-env-Reinforcement-learning/tree/main/exemples))  
+·Error Message Analysis  
+·Markdown File Editing Guidance (How to embed a video etc.)
+·RL Algorithms explanation
+·Writing helper functions: *CustomCNN()*, *count_streaks()*, *is_threatening_move()*
