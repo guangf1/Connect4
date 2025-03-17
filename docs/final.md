@@ -58,8 +58,8 @@ $$
 stable_baselines3, matplotlib, numpy, os, random, time, pygame, gymnasium, torch
 
 **⬢Papers**  
-·[Schulman, John, et al. "Proximal policy optimization algorithms." arXiv preprint arXiv:1707.06347 (2017).](https://arxiv.org/pdf/1707.06347)  
-·[Mnih, Volodymyr, et al. "Playing atari with deep reinforcement learning." arXiv preprint arXiv:1312.5602 (2013).](https://arxiv.org/pdf/1312.5602)  
+·Schulman, John, et al. "Proximal policy optimization algorithms." arXiv preprint arXiv:1707.06347 (2017) [URL](https://arxiv.org/pdf/1707.06347)  
+·Mnih, Volodymyr, et al. "Playing atari with deep reinforcement learning." arXiv preprint arXiv:1312.5602 (2013) [URL](https://arxiv.org/pdf/1312.5602)  
 
 
 ## AI Tool Usage
