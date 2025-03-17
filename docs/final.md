@@ -49,7 +49,7 @@ $$
 The results based on the environment built-in Elo scoring system will be our primary method of evaluating our programs. In addition to using Elo scores to judge the performance of AI models, we will also compare the effectiveness and convergence of using different training policies under different RL algorithms and analyze the reasons behind. Finally, we will summarize the strategies/behaviors learned by the AI based on observations of visualizing the game processes. First, let's explain how the Elo scoring system works.  
   
 When we use the get_elo() function on our already trained AI, we initialize our AI with a score of 1400, which is a score relative to the median score among built-in opponents. Similarly, the EloLeaderBoard class creates different built-in opponents as attributes and sets corresponding scores for them. Our AI will play multiple rounds against the two opponents with the closest scores. Depending on the winning percentage against two different opponents, our AI will get a new score and play multiple rounds again against the two opponents with closest scores. After num_matches rounds of changing opponents, the final score of the AI will be determined. For better understanding the process of determining Elo score, the following graph depitches a visualized procedure of Elo system:  
-<img src="https://github.com/user-attachments/assets/91b9bdae-dfdb-414f-8c15-a61cf8b5d5b7" width="300"> 
+<img src="https://github.com/user-attachments/assets/91b9bdae-dfdb-414f-8c15-a61cf8b5d5b7" width="600"> 
 
 ## References
 **⬢Environment:** Connect four environment by Lucas Bertola | [Github Repository](https://github.com/lucasBertola/Connect-4-Gym-env-Reinforcement-learning/tree/main/exemples)  
