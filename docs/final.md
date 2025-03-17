@@ -21,6 +21,7 @@ The environment built-in reward system of win +1 lose -1 draw 0 is not effective
 ![1742102978578](https://github.com/user-attachments/assets/f83c41f0-5293-44a5-b232-4c6c16ce6227)  
   
 On top of that, for each action, the AI receives a -0.0005 REWARD, which is used to encourage the AI to complete a game in a shorter number of steps.  
+  
 In addition to adjusting the reward system, we made a very important change to the environment by allowing the opponent to also receive single-step reward for each action and subtract it from our side. The main purpose of this change is to allow the model to learn about changes in rewards from the behavior of both players, thus speeding up training and avoiding that when too many single-step rewards are accumulated, the model will give up on winning by creating more streaks to get bigger rewards(this is something that we have observed does happen, especially in the PPO algorithm)  
   
 **·Baseline Approach**  
@@ -83,6 +84,7 @@ for i in range(8):
     Elos.append(EloLeaderboard().get_elo(myModelPlayer, num_matches=200))
     Models.append(model)
 ```
+Since our environment contains a discrete action space, we conjecture that the DQN algorithm would be well suited to solve the DQN problem in our adopted environment, since DQN would project the behavior that is most likely to result in the greatest gain based on past experiences in a discrete action space. We have also considered possible problems with DQN in the Connect4 environment. For zero-sum game scenarios similar to Connect4, especially in fast-paced games like Connect4, we conjecture that DQNs might have difficulty adapting to changes in the opponent's strategy, and thus be under-generalizable. Similarly, we will try to use two training strategies, Cnn and Mlp, and observe their effects on training performance and efficiency.
 
 ## Evaluation
 The results based on the environment built-in Elo scoring system will be our primary method of evaluating our programs. In addition to using Elo scores to judge the performance of AI models, we will also compare the effectiveness and convergence of using different training policies under different RL algorithms and analyze the reasons behind. Finally, we will summarize the strategies/behaviors learned by the AI based on observations of visualizing the game processes. First, let's explain how the Elo scoring system works.  
