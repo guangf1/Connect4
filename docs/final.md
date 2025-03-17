@@ -64,6 +64,7 @@ The following function from the paper defined how DQN continuously adapts its st
 $$
 \nabla_{\theta} L_i (\theta_i) = \mathbb{E}_{s, a \sim \rho(.)} \left[ \left( r + \gamma \max_{a'} Q(s', a'; \theta_{i-1}) - Q(s, a; \theta_i) \right) \nabla_{\theta} Q(s, a; \theta_i) \right]
 $$  
+  
 As we did when training the PPO model, we still take the approach of gradually increasing the difficulty of the opponents while gradually increasing the total timestep of training to prevent the model from failing to learn an effective strategy due to always winning or always losing. We also continue to use two different training strategies, Cnn and Mlp, and observe the difference between their training results and efficiency, and analyze the reasons based on the results. The code we wrote to train a model with DQN is almost identical to the code we train models with PPO. The difference is that due to the inefficient use of samples in PPO, we trained the DQN with fewer total timesteps per training session. The other differences are the hyperparameters adjusted to accommodate the differences between PPO and DQN. An example code of training a model using DQN algorithm is as follows:  
 ```python
 env = ConnectFourEnv()
