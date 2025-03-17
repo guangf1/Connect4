@@ -21,6 +21,7 @@ The environment built-in reward system of win +1 lose -1 draw 0 is not effective
 ![1742102978578](https://github.com/user-attachments/assets/f83c41f0-5293-44a5-b232-4c6c16ce6227)  
   
 On top of that, for each action, the AI receives a -0.0005 REWARD, which is used to encourage the AI to complete a game in a shorter number of steps.  
+In addition to adjusting the reward system, we made a very important change to the environment by allowing the opponent to also receive single-step reward for each action and subtract it from our side. The main purpose of this change is to allow the model to learn about changes in rewards from the behavior of both players, thus speeding up training and avoiding that when too many single-step rewards are accumulated, the model will give up on winning by creating more streaks to get bigger rewards(this is something that we have observed does happen, especially in the PPO algorithm)  
   
 **·Baseline Approach**  
 A basic use case was given in the documentation of the ConnectFour environment library. We use this example as our baseline approach. we simply create an instance of the ConnectFour environment and train a 100,000-step model using the PPO algorithm + Mlp training strategy and the default hyperparameters. An example code of the Baseline approach is as follows:
