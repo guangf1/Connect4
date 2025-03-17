@@ -94,7 +94,9 @@ When we use the get_elo() function on our already trained AI, we initialize our 
 
 The eight different levels of built-in AI players in the Connect4 library have pre-set Elo scores. From worst to best: the worst is the BabyPlayer, which is almost drop tiles randomly; the best is the AdultSmarterPlayer, which has a complex attack/defence strategy; and AlphaFour, which is the perfect AI that wins 100% if it drops tile first, but it is not provided in the library. The table of AI players with corresponding Elo scores is as follows:  
 ![image](https://github.com/user-attachments/assets/92610dfd-2e30-4478-b6db-83e1f3362382)  
-  
+
+**·Result of Baseline Approach**  
+Although the results of the baseline approach were not satisfactory, as we expected, it can still give us a lot of inspiration. With the default environment, the model ends up with an Elo score of just over 1200. In the case where the opponent's strategy is almost completely random and will only receive a valid reward at the end of the game, the model will only adopt meaningful behavior with a small probability when it is about to win. After we changed the rewards and adjusted the environment, the model was able to achieve a score close to 1400 after training with the baseline approach. By visualizing the board and observing the actual gameplay, we found that by increasing the reward for a single move, the model at least learns to bead as many pieces as possible and to block the opponent's beads when his actions are meaningless.
 
 ## References
 **⬢Environment:** Connect four environment by Lucas Bertola | [Github Repository](https://github.com/lucasBertola/Connect-4-Gym-env-Reinforcement-learning/tree/main/exemples)  
@@ -117,5 +119,5 @@ stable_baselines3, matplotlib, numpy, os, random, time, pygame, gymnasium, torch
 ·Environment Suggestion: ([Connect four environment by Lucas Bertola](https://github.com/lucasBertola/Connect-4-Gym-env-Reinforcement-learning/tree/main/exemples))  
 ·Error Message Analysis  
 ·Markdown File Editing Guidance (How to embed a video etc.)
-·RL Algorithms explanation
+·RL Algorithms explanation  
 ·Writing helper functions: *CustomCNN()*, *count_streaks()*, *is_threatening_move()*
