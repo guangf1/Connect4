@@ -32,9 +32,25 @@ The above baseline approach is our first attempt in unlocking our understanding 
 
 **·Proximal Policy Optimization(PPO)**  
 Proximal policy optimization is one type of reinforcement learning algorithm used to train AI. The algorithm uses a policy gradient algorithm. It combines the ideas from A2C and TRPO algorithm. The PPO training approach we used from stable_baseline3 library based on the paper ["Proximal Policy Optimization Algorithms" by Schulman, John, et al](https://arxiv.org/pdf/1707.06347). The paper summarizes that the ppo function we used is a policy gradient method for reinforcement learning, which alternate between sampling data through interaction with the environment, and optimizing a "surrogate" objective function using stochastic gradient ascent.  
-The following formula defines the Clipped Surrogate Objective(CSO) of the PPO, which is used to stabilize policy updates and avoid excessive policy changes:
+The following formula defines the Clipped Surrogate Objective(CSO) of the PPO, which is used to stabilize policy updates and avoid excessive policy changes:  
+$$L^{\text{CLIP}}(\theta) = \hat{\mathbb{E}}_t \left[ \min \left( r_t(\theta) \hat{A}_t, \, \text{clip} \left( r_t(\theta), 1 - \epsilon, 1 + \epsilon \right) \hat{A}_t \right) \right]$$  
+In our project, we use the ppo method from the stable_baseline3 library. Starting with the simplest BabyPlayer provided in the environment, we gradually increase the difficulty and train up to the AdultSmarterPlayer, which is the best built-in AI player with complex gaming strategy. Starting with the simplest opponents, we gradually increase the timestep required for training, because the model can quickly learn the game strategies from opponents with lower levels of skill to find winning strategies, so we gradually increase the timestep so that we stop training when the result converges. Each time we use change_opponent() to increase the difficulty of the game, we record the current state of the mod and the Elo score. An example code of training a model using PPO algorithm is as follows:  
+```python
+env = ConnectFourEnv()
+model = PPO("CnnPolicy/MlpPolicy", env, verbose=1)
+opponents = [BabyPlayer(), BabySmarterPlayer(), ChildPlayer(), ChildSmarterPlayer(), TeenagerPlayer(), TeenagerSmarterPlayer(), AdultPlayer(), AdultSmarterPlayer()]
+Elos = []
+Models = []
+Timesteps = [...]
 
-$$L^{\text{CLIP}}(\theta) = \hat{\mathbb{E}}_t \left[ \min \left( r_t(\theta) \hat{A}_t, \, \text{clip} \left( r_t(\theta), 1 - \epsilon, 1 + \epsilon \right) \hat{A}_t \right) \right]$$
+for i in range(8):
+    env.change_opponent(opponents[i])
+    model.set_env(env)
+    model.learn(total_timesteps=Timesteps[i])
+    myModelPlayer = ModelPlayer(model,name="Your trained Model1")
+    Elos.append(EloLeaderboard().get_elo(myModelPlayer, num_matches=200))
+    Models.append(model)
+```
 
 
 **·Deep Q-network(DQN)**  
