@@ -49,6 +49,17 @@ $$
 
 
 ## References
+**⬢Environment:** Connect four environment by Lucas Bertola | [Github Repository](https://github.com/lucasBertola/Connect-4-Gym-env-Reinforcement-learning/tree/main/exemples)  
+·Defined, adapted game logic for the gymnasium library interface  
+·Pretrained AI opponents for training our own models  
+·Elo system for evaluating AI training results  
+
+**⬢Python Libraries**  
+stable_baselines3, matplotlib, numpy, os, random, time, pygame, gymnasium, torch
+
+**⬢Papers**  
+·[Schulman, John, et al. "Proximal policy optimization algorithms." arXiv preprint arXiv:1707.06347 (2017).](https://arxiv.org/pdf/1707.06347)  
+·[Mnih, Volodymyr, et al. "Playing atari with deep reinforcement learning." arXiv preprint arXiv:1312.5602 (2013).](https://arxiv.org/pdf/1312.5602)  
 
 
 ## AI Tool Usage
