@@ -145,7 +145,7 @@ The DQN algorithm focuses more on the “next step” move than the PPO algorith
 
 **·Result of Self-Play-Training: A Failed Attempt to Boost the Model**  
   
-**·Project Summary**  
+**·Project Conclusion**  
   
 **·What's missing? - Project Future Prospect**
 
