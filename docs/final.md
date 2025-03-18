@@ -151,6 +151,6 @@ stable_baselines3, matplotlib, numpy, os, random, time, pygame, gymnasium, torch
 **⬢AI Chatbot:** Chatgpt, Deepseek  
 ·Environment Suggestion: ([Connect four environment by Lucas Bertola](https://github.com/lucasBertola/Connect-4-Gym-env-Reinforcement-learning/tree/main/exemples))  
 ·Error Message Analysis  
-·Markdown File Editing Guidance (How to embed a video etc.)
+·Markdown File Editing Guidance (How to embed a video etc.)  
 ·RL Algorithms explanation  
 ·Writing helper functions: *CustomCNN()*, *count_streaks()*, *is_threatening_move()*
