@@ -117,7 +117,7 @@ Although as we expected, the results of the baseline approach were not satisfact
   
 **·Result of PPO Approach**  
 In this report, we show sample code for training PPO, i.e., constantly updating the difficulty of the opponent in a for loop and increasing the total timesteps used for training, for reasons of logical readability of the code. In our actual training of a model, instead of using a for loop, we manually change the opponents and increase the timesteps, which is a choice we made in order to monitor the results and correct errors in real time. With the same timestep and different hyperparameters chosen, the performance of the model using the Mlp and Cnn training policies grows in the following two-plots trend, respectively.  
-<div style="display: flex; gap: 15px;">
+<div style="display: flex; gap: 50px;">
     <img src="https://github.com/user-attachments/assets/16443d1d-183e-4895-8da0-fe3d1b746931" width="300">
     <img src="https://github.com/user-attachments/assets/ba80f2b8-18e0-429f-9b17-401bc0591f91" width="300">
 </div>  
@@ -125,7 +125,7 @@ Regardless of whether the Cnn policy or the Mlp policy is used, training a model
 
 **·Result of DQN Approach**  
 Similarly, we manually adjusted the adversary and timestep during the actual training of the DQN model for even stopping an incorrect attempt and finding out why. The performance of the DQN model trainded using the Mlp and Cnn training policies grows in the following two-plots trend, respectively.  
-<div style="display: flex; gap: 15px;">
+<div style="display: flex; gap: 50px;">
     <img src="https://github.com/user-attachments/assets/b86b9dd6-e222-479b-8746-4a06ff511e0f" width="300">
     <img src="https://github.com/user-attachments/assets/b93de65e-3db4-4a23-bcce-cf8b4d4fe712" width="300">
 </div>  
@@ -133,7 +133,7 @@ The model trained by DQN is much more powerful than the one trained by PPO, espe
 
 **·Visualized Example & Models Behaviors Observation of PPO/DQN**  
 With pygame, we visualized the progress of the game, thus summarizing the behaviors that the AI can do when using different algorithms and training policies. It is worth mentioning that the logic behind the behavior of the models trained by the DQN algorithm is easier to analyze. As follows, on the left is a visualization of what the board would look like, and on the right is our summary of the model's behavior table ("?" Denotes that the model will, but is not guaranteed to always behave this way):  
-<div style="display: flex; gap: 15px;">
+<div style="display: flex; gap: 50px;">
     <img src="https://github.com/user-attachments/assets/051b38b4-7212-4d28-b7bb-505b4cd0cf52" width="300">
     <img src="https://github.com/user-attachments/assets/dc28f708-37ef-49a9-914a-8c4483842341" width="400">
 </div>  
