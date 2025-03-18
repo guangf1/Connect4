@@ -135,7 +135,7 @@ The model trained by DQN is much more powerful than the one trained by PPO, espe
 With pygame, we visualized the progress of the game, thus summarizing the behaviors that the AI can do when using different algorithms and training policies. It is worth mentioning that the logic behind the behavior of the models trained by the DQN algorithm is easier to analyze. As follows, on the left is a visualization of what the board would look like, and on the right is our summary of the model's behavior table ("?" Denotes that the model will, but is not guaranteed to always behave this way):  
 <div style="display: flex; gap: 15px;">
     <img src="https://github.com/user-attachments/assets/051b38b4-7212-4d28-b7bb-505b4cd0cf52" width="300">
-    <img src="https://github.com/user-attachments/assets/dc28f708-37ef-49a9-914a-8c4483842341" width="300">
+    <img src="https://github.com/user-attachments/assets/dc28f708-37ef-49a9-914a-8c4483842341" width="400">
 </div>  
 
 ## References
