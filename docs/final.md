@@ -129,7 +129,14 @@ Similarly, we manually adjusted the adversary and timestep during the actual tra
     <img src="https://github.com/user-attachments/assets/b86b9dd6-e222-479b-8746-4a06ff511e0f" width="300">
     <img src="https://github.com/user-attachments/assets/b93de65e-3db4-4a23-bcce-cf8b4d4fe712" width="300">
 </div>  
-The model trained by DQN is much more powerful than the one trained by PPO, especially when trained with the Cnn policy, and it can still make effective progress even if the model's technology is already much more powerful than its rivals. When we take the trained model and play against AdultSmarterPlayer, it almost always wins. The DQN algorithm requires very few timesteps compared to the PPO algorithm and takes relatively less time to reach the same level of performance. However, due to the slower training of the DQN algorithm, the final convergence to the best result takes about the same amount of time as the PPO algorithm takes to train the model。
+The model trained by DQN is much more powerful than the one trained by PPO, especially when trained with the Cnn policy, and it can still make effective progress even if the model's technology is already much more powerful than its rivals. When we take the trained model and play against AdultSmarterPlayer, it almost always wins. The DQN algorithm requires very few timesteps compared to the PPO algorithm and takes relatively less time to reach the same level of performance. However, due to the slower training of the DQN algorithm, the final convergence to the best result takes about the same amount of time as the PPO algorithm takes to train the model.  
+
+**·Visualized Example & Models Behaviors Observation of PPO/DQN**  
+With pygame, we visualized the progress of the game, thus summarizing the behaviors that the AI can do when using different algorithms and training policies. It is worth mentioning that the logic behind the behavior of the models trained by the DQN algorithm is easier to analyze. As follows, on the left is a visualization of what the board would look like, and on the right is our summary of the model's behavior table ("?" Denotes that the model will, but is not guaranteed to always behave this way):  
+<div style="display: flex; gap: 15px;">
+    <img src="https://github.com/user-attachments/assets/051b38b4-7212-4d28-b7bb-505b4cd0cf52" width="300">
+    <img src="https://github.com/user-attachments/assets/dc28f708-37ef-49a9-914a-8c4483842341" width="300">
+</div>  
 
 ## References
 **⬢Environment:** Connect four environment by Lucas Bertola | [Github Repository](https://github.com/lucasBertola/Connect-4-Gym-env-Reinforcement-learning/tree/main/exemples)  
