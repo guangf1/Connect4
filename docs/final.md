@@ -56,13 +56,30 @@ for i in range(8):
     myModelPlayer = ModelPlayer(model,name="Your trained Model1")
     Elos.append(EloLeaderboard().get_elo(myModelPlayer, num_matches=200))
     Models.append(model)
-```
+```  
 The stability of PPO is an important advantage. It is a strategy gradient method that aims to find the strategy that maximizes the reward, so for most RL scenarios PPO is a worthwhile method to try. In addition to this, we tried to train the model using two different training strategies, CNN and MLP, in combination with PPO.CNN is theoretically more suitable for tasks such as Connect4 because CNN, as the main strategy for processing the image inputs, should be more powerful as it perceives the spatial relationships of the pieces. However, the Connect4 board is only 6x7 in size, and the difference between the whole and the local is not that big, and it is only through the results of the experiments that we can know whether CNN is more suitable for the Connect4 scenario than Mlp.  
   
 **·Deep Q-network(DQN)**  
 DQN (Deep Q-Network) is a reinforcement learning algorithm that combines deep learning and Q-Learning to solve complex reinforcement learning problems. We still used the DQN function defined in stable_baseline3 library to train our AI model. The DQN approach defined in stable_baseline3 based on the paper ["Playing Atari with Deep Reinforcement Learning" by Mnih, Volodymyr, et al](https://arxiv.org/pdf/1312.5602). The paper indicated that the model is a convolutional neural network, trained with a variant of Q-learning, whose input is raw pixels and whose output is a value function estimating future rewards.  
 The following function from the paper defined how DQN continuously adapts its strategy and converges to the optimal solution during training:  
   
+**·Self_Play_Training**  
+Whether training with DQN or PPO algorithms, the effect of training ends up converged. The model we trained is still a long way from perfect AI, so we wanted to find a way to improve the performance of the model again after the DQN or PPO training is complete. The approach we ultimately took was to let the model play with itself. An example code of self-play-training is as follows:  
+```python
+env = ConnectFourEnv()
+model = PPO/DQN.load(...)
+Elos = []
+
+for i in range(...):
+    opponent = ModelPlayer(model,name="yourself")
+    env.change_opponent(opponent)
+    model.set_env(env)
+    model.learn(total_timesteps=...)
+    myModelPlayer = ModelPlayer(model,name="Your trained Model1")
+    Elos.append(EloLeaderboard().get_elo(myModelPlayer, num_matches=200))
+```
+To ensure the sustainability of the training results. We set up a for loop and through this loop the unmodel keeps updating the opponents to keep up with itself. Within each loop, we train the model with only a small number of timesteps.
+
 $$
 \nabla_{\theta} L_i (\theta_i) = \mathbb{E}_{s, a \sim \rho(.)} \left[ \left( r + \gamma \max_{a'} Q(s', a'; \theta_{i-1}) - Q(s, a; \theta_i) \right) \nabla_{\theta} Q(s, a; \theta_i) \right]
 $$  
