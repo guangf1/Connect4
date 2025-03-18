@@ -138,10 +138,15 @@ With pygame, we visualized the progress of the game, thus summarizing the behavi
     <img src="https://github.com/user-attachments/assets/dc28f708-37ef-49a9-914a-8c4483842341" width="400">
 </div>  
   
-**Analysis**  
+**·Analysis**  
 PPO, as an algorithm to find the maximized reward by updating the gradient, can help the model to find a strategy to play against the current opponent and become an advantageous side, but soon the training of the model will converge and no longer improve its performance. This is because PPO focuses more on overall gradient update rather a specific action. It is also for this reason that it is difficult to find a difference between the performance of Cnn and Mlp under the PPO algorithm. Whether using the Cnn or Mlp policy, the PPO algorithm converges after the model has gained an advantage against the current adversary.  
-The DQN algorithm focuses more on the “next step” move than the PPO algorithm, and the DQN selects the optimal “next step” move based on past experience in order to maximize the rewards. Therefore, even if the model has already gained an absolute advantage in the game against the current opponent, the DQN algorithm will still train the model to choose a better action. In addition, Cnn, a strategy commonly used to deal with high-dimensional environments such as images, raises the upper bound of the model's performance to a level where it can play against most human players.
+The DQN algorithm focuses more on the “next step” move than the PPO algorithm, and the DQN selects the optimal “next step” move based on past experience in order to maximize the rewards. Therefore, even if the model has already gained an absolute advantage in the game against the current opponent, the DQN algorithm will still train the model to choose a better action. In addition, Cnn, a strategy commonly used to deal with high-dimensional environments such as images, raises the upper bound of the model's performance to a level where it can play against most human players.  
 
+**·Result of Self-Play-Training: A Failed Attempt to Boost the Model**  
+  
+**·Project Summary**  
+  
+**·What's missing? - Project Future Prospect**
 
 ## References
 **⬢Environment:** Connect four environment by Lucas Bertola | [Github Repository](https://github.com/lucasBertola/Connect-4-Gym-env-Reinforcement-learning/tree/main/exemples)  
