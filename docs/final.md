@@ -129,7 +129,7 @@ Similarly, we manually adjusted the adversary and timestep during the actual tra
     <img src="https://github.com/user-attachments/assets/b86b9dd6-e222-479b-8746-4a06ff511e0f" width="300">
     <img src="https://github.com/user-attachments/assets/b93de65e-3db4-4a23-bcce-cf8b4d4fe712" width="300">
 </div>  
-
+The model trained by DQN is much more powerful than the one trained by PPO, especially when trained with the Cnn policy, and it can still make effective progress even if the model's technology is already much more powerful than its rivals. The DQN algorithm requires very few timesteps compared to the PPO algorithm and takes relatively less time to reach the same level of performance. However, due to the slower training of the DQN algorithm, the final convergence to the best result takes about the same amount of time as the PPO algorithm takes to train the model。
 
 ## References
 **⬢Environment:** Connect four environment by Lucas Bertola | [Github Repository](https://github.com/lucasBertola/Connect-4-Gym-env-Reinforcement-learning/tree/main/exemples)  
