@@ -137,6 +137,7 @@ With pygame, we visualized the progress of the game, thus summarizing the behavi
     <img src="https://github.com/user-attachments/assets/051b38b4-7212-4d28-b7bb-505b4cd0cf52" width="300">
     <img src="https://github.com/user-attachments/assets/dc28f708-37ef-49a9-914a-8c4483842341" width="400">
 </div>  
+
   
 **·Analysis**  
 PPO, as an algorithm to find the maximized reward by updating the gradient, can help the model to find a strategy to play against the current opponent and become an advantageous side, but soon the training of the model will converge and no longer improve its performance. This is because PPO focuses more on overall gradient update rather a specific action. It is also for this reason that it is difficult to find a difference between the performance of Cnn and Mlp under the PPO algorithm. Whether using the Cnn or Mlp policy, the PPO algorithm converges after the model has gained an advantage against the current adversary.  
