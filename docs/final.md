@@ -62,23 +62,6 @@ The stability of PPO is an important advantage. It is a strategy gradient method
 **·Deep Q-network(DQN)**  
 DQN (Deep Q-Network) is a reinforcement learning algorithm that combines deep learning and Q-Learning to solve complex reinforcement learning problems. We still used the DQN function defined in stable_baseline3 library to train our AI model. The DQN approach defined in stable_baseline3 based on the paper ["Playing Atari with Deep Reinforcement Learning" by Mnih, Volodymyr, et al](https://arxiv.org/pdf/1312.5602). The paper indicated that the model is a convolutional neural network, trained with a variant of Q-learning, whose input is raw pixels and whose output is a value function estimating future rewards.  
 The following function from the paper defined how DQN continuously adapts its strategy and converges to the optimal solution during training:  
-  
-**·Self_Play_Training**  
-Whether training with DQN or PPO algorithms, the effect of training ends up converged. The model we trained is still a long way from perfect AI, so we wanted to find a way to improve the performance of the model again after the DQN or PPO training is complete. The approach we ultimately took was to let the model play with itself. An example code of self-play-training is as follows:  
-```python
-env = ConnectFourEnv()
-model = PPO/DQN.load(...)
-Elos = []
-
-for i in range(...):
-    opponent = ModelPlayer(model,name="yourself")
-    env.change_opponent(opponent)
-    model.set_env(env)
-    model.learn(total_timesteps=...)
-    myModelPlayer = ModelPlayer(model,name="Your trained Model1")
-    Elos.append(EloLeaderboard().get_elo(myModelPlayer, num_matches=200))
-```
-To ensure the sustainability of the training results. We set up a for loop and through this loop the unmodel keeps updating the opponents to keep up with itself. Within each loop, we train the model with only a small number of timesteps.
 
 $$
 \nabla_{\theta} L_i (\theta_i) = \mathbb{E}_{s, a \sim \rho(.)} \left[ \left( r + \gamma \max_{a'} Q(s', a'; \theta_{i-1}) - Q(s, a; \theta_i) \right) \nabla_{\theta} Q(s, a; \theta_i) \right]
@@ -101,7 +84,24 @@ for i in range(8):
     Elos.append(EloLeaderboard().get_elo(myModelPlayer, num_matches=200))
     Models.append(model)
 ```
-Since our environment contains a discrete action space, we conjecture that the DQN algorithm would be well suited to solve the DQN problem in our adopted environment, since DQN would project the behavior that is most likely to result in the greatest gain based on past experiences in a discrete action space. We have also considered possible problems with DQN in the Connect4 environment. For zero-sum game scenarios similar to Connect4, especially in fast-paced games like Connect4, we conjecture that DQNs might have difficulty adapting to changes in the opponent's strategy, and thus be under-generalizable. Similarly, we will try to use two training strategies, Cnn and Mlp, and observe their effects on training performance and efficiency.
+Since our environment contains a discrete action space, we conjecture that the DQN algorithm would be well suited to solve the DQN problem in our adopted environment, since DQN would project the behavior that is most likely to result in the greatest gain based on past experiences in a discrete action space. We have also considered possible problems with DQN in the Connect4 environment. For zero-sum game scenarios similar to Connect4, especially in fast-paced games like Connect4, we conjecture that DQNs might have difficulty adapting to changes in the opponent's strategy, and thus be under-generalizable. Similarly, we will try to use two training strategies, Cnn and Mlp, and observe their effects on training performance and efficiency.  
+
+**·Self_Play_Training**  
+Whether training with DQN or PPO algorithms, the effect of training ends up converged. The model we trained is still a long way from perfect AI, so we wanted to find a way to improve the performance of the model again after the DQN or PPO training is complete. The approach we ultimately took was to let the model play with itself. An example code of self-play-training is as follows:  
+```python
+env = ConnectFourEnv()
+model = PPO/DQN.load(...)
+Elos = []
+
+for i in range(...):
+    opponent = ModelPlayer(model,name="yourself")
+    env.change_opponent(opponent)
+    model.set_env(env)
+    model.learn(total_timesteps=...)
+    myModelPlayer = ModelPlayer(model,name="Your trained Model1")
+    Elos.append(EloLeaderboard().get_elo(myModelPlayer, num_matches=200))
+```
+To ensure the sustainability of the training results. We set up a for loop and through this loop the unmodel keeps updating the opponents to keep up with itself. Within each loop, we train the model with only a small number of timesteps.  
 
 ## Evaluation
 The results based on the environment built-in Elo scoring system will be our primary method of evaluating our programs. In addition to using Elo scores to judge the performance of AI models, we will also compare the effectiveness and convergence of using different training policies under different RL algorithms and analyze the reasons behind. Finally, we will summarize the strategies/behaviors learned by the AI based on observations of visualizing the game processes. First, let's explain how the Elo scoring system works.  
