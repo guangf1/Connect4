@@ -145,10 +145,12 @@ PPO, as an algorithm to find the maximized reward by updating the gradient, can 
 The DQN algorithm focuses more on the “next step” move than the PPO algorithm, and the DQN selects the optimal “next step” move based on past experience in order to maximize the rewards. Therefore, even if the model has already gained an absolute advantage in the game against the current opponent, the DQN algorithm will still train the model to choose a better action. In addition, Cnn, a strategy commonly used to deal with high-dimensional environments such as images, raises the upper bound of the model's performance to a level where it can play against most human players.  
 
 **·Result of Self-Play-Training: A Failed Attempt to Boost the Model**  
+<img src="https://github.com/user-attachments/assets/44deeab7-f450-4ca0-8c0b-df72a3f70e6f" width="300">  
+Our attempts at self-play-training were ultimately unsuccessful. We didn't end up fixing the self-play-training method due to lack of time, but we analyzed the reasons for the failure of self-play-training through several tests. When training a model from scratch instead of using a trained model, self-play-training does not produce as powerful a model as PPO or DQN, but at least the results show an increasing trend. As the model plays against itself, both players are identical to each other, and the model's gaming strategy may start to solidify, or be overfitted. In this case, the model gradually forgets the strategies it has learned in the past as it plays against itself, and becomes less applicable to playing against other players.
   
-**·Project Conclusion**  
-  
-**·What's missing? - Project Future Prospect**
+**·Achievement and  Failure**  
+In conclusion, we did a good job of meeting our expectations for this project. We successfully trained a powerful AI player (DQN+Cnn). It has a clear understanding of the rules of the game, avoiding dangerous actions but at the same time actively creating situations in its favor. In the process of trying to train the model, we also came to understand how different algorithms and different neural network structures work and which scenarios they are suitable for. Unfortunately, Connect4 is a “solved” board game, but we didn't end up training a perfect AI player. In order to train an AI player that will always win as the first play,  we may need to use some search algorithms such as MCTS in combination with Alphazero.
+
 
 ## References
 **⬢Environment:** Connect four environment by Lucas Bertola | [Github Repository](https://github.com/lucasBertola/Connect-4-Gym-env-Reinforcement-learning/tree/main/exemples)  
