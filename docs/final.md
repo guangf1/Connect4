@@ -5,7 +5,7 @@ title: Final Report
 
 ## Video
 
-<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1066910981?h=7ed65e0c41&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Final Report"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1067601483?h=f85098cff7&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="New Recording - 2025/3/19 21:17:18"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 
 ## Project Summary
 Connect Four is a board game that was released by Howard Wexler in 1974. In a 7x6 board, a player wins when the player places tiles in any direction to form a line of length four. In RL, Connect4's special features include the fact that it is a two-player zero-sum game with a fully observable state. the Connect4 board is small and the rules are simple, but an AI may face opponents with different levels of skills and playing strategies. As a result, when training an AI, the results are highly convergent and difficult to be applied to other opponents.  
