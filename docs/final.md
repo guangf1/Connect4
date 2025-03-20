@@ -125,7 +125,7 @@ In this report, we show sample code for training PPO, i.e., constantly updating 
 Regardless of whether the Cnn policy or the Mlp policy is used, training a model using the PPO algorithm can ultimately result in the model outperforming the trained AI AdultSmarterPlayer after a large number of timesteps, although the advantage it possesses against the AdultSmarterPlayer is not overwhelming, but at a certain point is reached. Cnn policy and Mlp policy do not show a significant difference in the PPO algorithm, they both have a gradual increase in performance.  
 
 **·Result of DQN Approach**  
-Similarly, we manually adjusted the adversary and timestep during the actual training of the DQN model for even stopping an incorrect attempt and finding out why. The performance of the DQN model trainded using the Mlp and Cnn training policies grows in the following two-plots trend, respectively.  
+Similarly, we manually adjusted the opponent and timestep during the actual training of the DQN model for even stopping an incorrect attempt and finding out why. The performance of the DQN model trainded using the Mlp and Cnn training policies grows in the following two-plots trend, respectively.  
 <div style="display: flex; gap: 50px;">
     <img src="https://github.com/user-attachments/assets/b86b9dd6-e222-479b-8746-4a06ff511e0f" width="300">
     <img src="https://github.com/user-attachments/assets/b93de65e-3db4-4a23-bcce-cf8b4d4fe712" width="300">
